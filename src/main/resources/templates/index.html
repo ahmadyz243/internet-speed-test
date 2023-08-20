@@ -3,61 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <script src="/js/jquery.js" type="text/javascript"></script>
-    <script src="/js/jquery.speedtest.js" type="text/javascript"></script>
-
-    <style>
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            height: 100vh;
-            background:  #5294f1;
-        }
-        .container {
-            width: 350px;
-            background-color: #ffffff;
-            padding: 4em 2em;
-            position: absolute;
-            transform: translate(-50%, -50%);
-            top: 50%;
-            left: 50%;
-            border-radius: 0.5em;
-            font-family: "Poppins", sans-serif;
-            font-size: 1.2em;
-            line-height: 2.2em;
-            box-shadow: 0 1.6em 2.4em rgb(40, 4, 67, 0.3);
-        }
-        p {
-            font-size: 400;
-            color: #747497;
-            letter-spacing: 0.02em;
-        }
-        span {
-            font-weight: 500;
-            color: #090931;
-        }
-
-    </style>
-
     <title>Speed Test</title>
 </head>
 <body>
 
-    <button id="testDownloadSpeedBtn" type="button">Test</button>
+    <button id="testDownloadSpeedBtn" type="button">Test download speed</button>
+    <button id="testUploadSpeedBtn" type="button">Test upload speed</button>
+    <button id="pingBtn" type="button">ping</button>
     <br><hr>
-    <p id="outPut"></p>
-    <br><hr>
 
-    <div class="container">
 
-        <p id="bits"><span>Speed In Bits:</span></p>
-        <p id="kbs"><span>Speed In Kbs:</span></p>
-        <p id="mbs"><span>Speed In Mbs:</span></p>
-
-    </div>
 
 
 

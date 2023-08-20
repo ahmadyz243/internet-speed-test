@@ -2,23 +2,24 @@ package com.yazdi.speedtest.controller.rest;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.util.FileCopyUtils;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.*;
 import java.net.URLConnection;
 
 @RestController
-@RequestMapping("/download")
+@RequestMapping("/speedTest")
 public class MainController {
 
     private static final String EXTERNAL_FILE_PATH = "download-files/";
 
 
     @RequestMapping("/file/{fileName:.+}")
-    public void downloadPDFResource(HttpServletRequest request, HttpServletResponse response
+    public void downloadResource(HttpServletRequest request, HttpServletResponse response
         , @PathVariable("fileName") String fileName) throws IOException {
 
         File file = new File(EXTERNAL_FILE_PATH + fileName);
@@ -57,6 +58,16 @@ public class MainController {
 
         }
 
+    }
+
+    @PostMapping("/upload")
+    public void upload(@RequestHeader("Content-length") String contentLength){
+        System.out.println("length = " + contentLength);
+    }
+
+    @GetMapping("/ping")
+    public String checkPing(){
+        return "test ping";
     }
 
 }
