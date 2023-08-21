@@ -4,10 +4,22 @@ $(document).ready(function (){
 
 
     // events ---------------------------------------------
-    $("#testDownloadSpeedBtn").click(function (){
+    $("#startTestsBtn").click(async function (){
+        await startDownloadSpeedTest();
+        await startUploadSpeedTest();
+        await pingURL();
+    });
+
+
+
+
+    // functions --------------------------------------------------------------
+
+    function startDownloadSpeedTest(){
 
         const imgAddr = "http://localhost:8080/speedTest/file/test-file.jpg";
-        let startTime, endTime;
+        let startTime = 0;
+        let endTime = 0;
         const download_size = 3765995;
         const img = new Image();
 
@@ -21,15 +33,18 @@ $(document).ready(function (){
 
         function ShowData()
         {
-            const duration = (endTime - startTime) / 1000;
-            const bitsLoaded = download_size * 8;
-            const speedMbps = ((bitsLoaded / duration) / 1024 / 1024).toFixed(2);
-            alert("Speed: " + speedMbps + " Mbps");
+            let duration = 0;
+            duration = (endTime - startTime) / 1000;
+            let bitsLoaded = 0;
+            bitsLoaded = download_size * 8;
+            let speedMbps;
+            speedMbps = ((bitsLoaded / duration) / 1024 / 1024).toFixed(2);
+            $("#downloadSpeed").empty().text(speedMbps + " Mbps");
         }
 
-    })
+    }
 
-    $("#testUploadSpeedBtn").click(function (){
+    function startUploadSpeedTest(){
 
         const http = new XMLHttpRequest();
         let startTime, endTime;
@@ -56,21 +71,13 @@ $(document).ready(function (){
                 const bitsLoaded = myData.length * 8;
                 const speedMbps = ((bitsLoaded / duration) / 1024 / 1024).toFixed(2);
 
-                alert("start ==> " + startTime + "\n" + "end ==>" + endTime + "\n" + "speed ==> " + speedMbps + " MBps");
+                $("#uploadSpeed").empty().text(speedMbps + " MBps");
             }
         }
         startTime = (new Date()).getTime();
         http.send(myData);
 
-    })
-
-    $("#pingBtn").click(function (){
-        pingURL();
-    })
-
-
-
-    // functions --------------------------------------------------------------
+    }
 
     function pingURL() {
 
@@ -79,10 +86,12 @@ $(document).ready(function (){
         $.ajax({
             type: "GET",
             url: url,
+            async: false,
             contentType: "application/json; charset=utf-8",
-            dataType: "json",
+            dataType: "text",
             success: function (response) {
-                alert("ping ==> " + (start - (new Date()).getTime()) + " ms");
+                console.log(response)
+                $("#pintSpeed").empty().text(((new Date()).getTime() - start) + " ms");
             },
             error: function (message) {
                 console.log(message);

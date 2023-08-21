@@ -3,21 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <script src="/js/jquery.js" type="text/javascript"></script>
+    <script src="/js/bootstrap.js" typeof="text/javascript"></script>
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
     <title>Speed Test</title>
 </head>
 <body>
 
-    <button id="testDownloadSpeedBtn" type="button">Test download speed</button>
-    <button id="testUploadSpeedBtn" type="button">Test upload speed</button>
-    <button id="pingBtn" type="button">ping</button>
-    <br><hr>
+
+<div class="container">
+
+    <div class="costumeRow">
+
+        <div id="download" class="rowItem">
+            <h1>Download Speed</h1>
+            <p id="downloadSpeed"></p>
+        </div>
+
+        <div id="upload" class="rowItem">
+            <h1>Upload Speed</h1>
+            <p id="uploadSpeed"></p>
+        </div>
+
+        <div id="ping" class="rowItem">
+            <h1>Ping</h1>
+            <p id="pintSpeed"></p>
+        </div>
+
+    </div>
+
+    <div class="costumeRow">
+
+        <div id="jitterSection" class="rowItem">
+            <h1>Jitter</h1>
+            <p id="jitter"></p>
+        </div>
+
+        <div id="TelemetrySection" class="rowItem">
+            <h1>Telemetry</h1>
+            <p id="telemetry"></p>
+        </div>
+
+        <div id="otherInfo" class="rowItem">
+            <h1>Other Info</h1>
+            <p id="info"></p>
+        </div>
+
+    </div>
+
+    <button id="startTestsBtn" class="btn btn-outline-light">Start Speed Test</button>
+
+</div>
 
 
-
-
-
-
-    <script src="/js/main.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
 
 </body>
 </html>

@@ -66,6 +66,7 @@ public class MainController {
     }
 
     @GetMapping("/ping")
+    @ResponseBody
     public String checkPing(){
         return "test ping";
     }
